@@ -6,7 +6,7 @@ import cors from 'cors';
 // import cookieParser from 'cookie-parser';
 
 // import codeRunnerRouter from './codeRunner/nel/router';
-import router from './api/api.js';
+// import router from './api/api.js';
 // import authRouter from './auth/auth.js';
 
 // import notFound from './middleware/404.js';
@@ -21,16 +21,16 @@ let app = express();
 app.use(cors());
 // app.use(morgan('dev'));
 
+
 app.use(express.static('./public'));
-app.use(router);
 
 app.use(express.json());
-// app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));
 // app.use(cookieParser());
 // app.use(codeRunnerRouter);
+// app.use(router);
 
 // app.use(quizRouter);
-// app.use(router);
 // app.use(authRouter);
 
 

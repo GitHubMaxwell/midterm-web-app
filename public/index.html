@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Web App Test</title>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+
+</head>
+
+<body>
+  <main>
+    <!-- Start of Electron Frontend -->
+
+    <nav>
+      <ul id="navigation">
+        <li id="nav-home">
+          <a>Home</a>
+        </li>
+        <li id="nav-quiz">
+          <a>Quiz</a>
+        </li>
+        <li id="nav-roster">
+          <a>Roster</a>
+        </li>
+        <li id="nav-random">
+          <a>Random</a>
+        </li>
+        <li id="nav-pairs">
+          <a>Pairs</a>
+        </li>
+        <li id="nav-repl">
+          <a>Repl</a>
+        </li>
+      </ul>
+      <ul id="auth">
+        <li id="login">
+          <a>Log In</a>
+        </li>
+        <li id="signup">
+          <a>Sign Up</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="home">
+      <div id="courses" class="clearDiv"></div>
+      <form id='new-class' style='display:none;'>
+        Class Code
+        <input type="text" name="classCode">
+        <br> Class Repo
+        <input type="text" name="githubRepo">
+        <br>
+        <input type="submit" value="Submit">
+      </form>
+      <p id='suc-message'></p>
+    </div>
+    <div id="days" style="display:none;">
+    </div>
+    <div id='readMe' class="clearDiv"></div>
+    <div id="quiz" class="clearDiv"></div>
+    <div id="roster" class="clearDiv"></div>
+    <div id="pairs" class="clearDiv"></div>
+    <div id="random" class="clearDiv"></div>
+    <textarea readonly class="clearDiv" id="resultWindow" style="display:none; resize:both;" rows="34" cols="50">Console Output</textarea>
+    <div id="repl" class="clearDiv"></div>
+  
+    <div id="files" class="clearDiv"></div>
+    <div>
+      <button style="height:2em;width:5em;font-weight: bold;font-size: 0.75em;display:none;" id='run' type="submit">Run</button>
+
+    <!-- End of Electron Frontend-->
+
+    <div id="oauth"></div>
+
+    <hr> Access Token:
+    <span id="token"></span>
+    <hr>
+    <hr />
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="main.js"></script>
+  
+  <!-- <script>
+    let githubURL = "https://github.com/login/oauth/authorize";
+
+    let options = {
+      // local
+      client_id: 'd6c0defbd80f3979493a',
+      //live
+      // client_id: 'f749977a8455b627dc56',
+      redirect_uri: 'http://localhost:3000/oauth',
+      // redirect_uri: 'https://code-commando.herokuapp.com/oauth',
+      scope: 'read:user repo',
+      state: 'autumn',
+      allow_signup: 'true',
+    }
+
+    let QueryString = Object.keys(options).map((key, i) => {
+      return `${key}=` + encodeURIComponent(options[key]);
+    }).join("&");
+
+    let authURL = `${githubURL}?${QueryString}`;
+
+    $('#oauth').append(`<a href="${authURL}">Login With GitHub</a>`);
+  </script> -->
+
+</body>
+
+</html>

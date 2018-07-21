@@ -1,6 +1,6 @@
 'use strict';
 
-
+let port = 3000;
 let day;
 let classCode;
 let apiUrl;
@@ -14,7 +14,7 @@ document.getElementById('nav-home').addEventListener('click', () => {
   // http://localhost:3000/api/v1/user
   // http://api.commando.ccs.net/api/v1/user
   $.ajax({
-    url: `http://localhost:3000/api/v1/user`,
+    url: `http://localhost:${port}/api/v1/user`,
     type: 'GET',
     headers: {'Authorization':`Bearer ${sessionStorage.getItem('jwt')}`},
   })
@@ -35,7 +35,7 @@ document.getElementById('courses').addEventListener('click', event => {
     $.ajax({
       url: `${apiUrl}`,
       type: 'GET',
-    //   headers: {'Authorization':`Bearer ${sessionStorage.getItem('jwt')}`},
+      headers: {'Authorization':`Bearer ${sessionStorage.getItem('jwt')}`},
     })
       .then(data => {
         let str = '<ul>';
@@ -56,7 +56,8 @@ document.getElementById('days').addEventListener('click', (event) => {
     day = event.target.id;
     dayName = event.target.textContent;
     $.ajax({
-      url: `http://api.commando.ccs.net/api/v1/readme/${day}`,
+    //   url: `http://api.commando.ccs.net/api/v1/readme/${day}`,
+      url: `http://localhost:${port}/api/v1/readme/${day}`,
       type: 'GET',
       headers: {'Authorization':`Bearer ${sessionStorage.getItem('jwt')}`},
     })
@@ -76,7 +77,8 @@ document.getElementById('nav-quiz').addEventListener('click', () => {
     clearDiv();
     $('#home').hide();
     $.ajax({
-      url: `http://api.commando.ccs.net/api/v1/quiz/${day}`,
+    //   url: `http://api.commando.ccs.net/api/v1/quiz/${day}`,
+      url: `http://localhost:${port}/api/v1/quiz/${day}`,
       type: 'GET',
       headers: {'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`},
     //   beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', `Bearer ${window.sessionStorage.jwt}`);
@@ -117,7 +119,8 @@ document.getElementById('nav-roster').addEventListener('click', () => {
   clearDiv();
   //   return superagent.get(`http://api.commando.ccs.net/api/v1/roster?classCode=${classCode}`)
   $.ajax({
-    url: `http://api.commando.ccs.net/api/v1/roster?classCode=${classCode}`,
+    // url: `http://api.commando.ccs.net/api/v1/roster?classCode=${classCode}`,
+    url: `http://localhost:${port}/api/v1/roster?classCode=${classCode}`,
     type: 'GET',
     headers: {'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`},
   //   beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', `Bearer ${window.sessionStorage.jwt}`);
@@ -143,7 +146,8 @@ document.getElementById('nav-pairs').addEventListener('click', () => {
   //   superagent.get('http://api.commando.ccs.net/api/v1/roster/pairs?classCode=' + classCode)
 
   $.ajax({
-    url: `http://api.commando.ccs.net/api/v1/roster/pairs?classCode=${classCode}`,
+    // url: `http://api.commando.ccs.net/api/v1/roster/pairs?classCode=${classCode}`,
+    url:`http://localhost:${port}/api/v1/roster/pairs?classCode=${classCode}`,
     type: 'GET',
     headers: {'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`},
   //   beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', `Bearer ${window.sessionStorage.jwt}`);
@@ -169,7 +173,8 @@ document.getElementById('nav-random').addEventListener('click', () => {
   
   //   superagent.get('http://api.commando.ccs.net/api/v1/roster/random?classCode=' + classCode)
   $.ajax({
-    url: `http://api.commando.ccs.net/api/v1/roster/random?classCode=${classCode}`,
+    // url: `http://api.commando.ccs.net/api/v1/roster/random?classCode=${classCode}`,
+    url: `http://localhost:${port}/api/v1/roster/random?classCode=${classCode}`,
     type: 'GET',
     headers: {'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`},
   //   beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', `Bearer ${window.sessionStorage.jwt}`);
@@ -194,8 +199,8 @@ document.getElementById('signup').addEventListener('click', () => {
     client_id: 'd6c0defbd80f3979493a',
     //live
     // client_id: 'f749977a8455b627dc56',
-    // redirect_uri: 'http://localhost:3000/oauth',
-    redirect_uri: 'https://code-commcando.herokuapp.com/oauth',
+    redirect_uri: 'http://localhost:3005/oauth',
+    // redirect_uri: 'https://code-commcando.herokuapp.com/oauth',
     scope: 'read:user repo',
     state: 'autumn',
     allow_signup: 'true',
@@ -214,7 +219,7 @@ document.getElementById('login').addEventListener('click', () => {
     client_id: 'd6c0defbd80f3979493a',
     //live
     // client_id: 'f749977a8455b627dc56',
-    redirect_uri: 'http://localhost:3000/oauth',
+    redirect_uri: 'http://localhost:3005/oauth',
     // redirect_uri: 'https://code-commcando.herokuapp.com/oauth',
     scope: 'read:user repo',
     state: 'autumn',
@@ -255,7 +260,8 @@ $('#nav-repl').on('click', () => {
   //   superagent.get(`http://localhost:3000/api/v1/code/${day}?classCode=` + classCode)
   //     .set({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${window.sessionStorage.jwt}` })
   $.ajax({
-    url: `http://localhost:3000/api/v1/code/${day}?classCode=${classCode}`,
+    // url: `http://localhost:3000/api/v1/code/${day}?classCode=${classCode}`,
+    url: `http://localhost:${port}/api/v1/code/${day}?classCode=${classCode}`,
     type: 'GET',
     headers: {'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`},
     //   beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', `Bearer ${window.sessionStorage.jwt}`);
